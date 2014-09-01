@@ -1,0 +1,11 @@
+<?php $entity = $this->getEntity(); ?>
+<?php $payload = $this->getPayload(); ?>
+
+<table class="list">
+<?php foreach($payload as $k=>$v):?>
+<tr>
+	<td><?php echo $k; ?></td>
+	<td><?php echo $this->getValue($v); ?></td>
+</tr>	
+<?php endforeach; ?>
+</table>

@@ -1,0 +1,27 @@
+<?php
+	$payload = $this->getPayload();
+	$collection = $this->getCollection();
+	//var_dump($payload);die;
+?>
+
+<div style="font-size:12px; line-height:16px; margin:0;color:#5f3e67;">
+	<table class="list" width="100%">
+		<?php $printHeaders=true; foreach(reset($payload['_embedded']) as $item): ?>
+			<?php if($printHeaders): ?>
+			<thead>
+			<tr>
+				<?php foreach($item as $key=>$value): ?>
+				<th><?php echo $key; ?></th>
+				<?php endforeach; $printHeaders=false; ?>
+			</tr>
+			</thead>
+			<?php endif; ?>
+			<tr>
+				<?php foreach($item as $key=>$value): ?>
+				<td><?php echo $value; ?></td>
+				<?php endforeach; ?>
+			</tr>
+		<?php endforeach; ?>
+	</table>
+</div>
+
