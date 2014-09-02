@@ -1,9 +1,4 @@
 <?php
-/**
- * @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
- * @copyright Copyright (c) 2014 Zend Technologies USA Inc. (http://www.zend.com)
- */
-
 namespace HtmlNegotiation\View;
 
 use Zend\View\HelperPluginManager;
@@ -12,8 +7,6 @@ use Zend\View\ViewEvent;
 use ZF\ApiProblem\ApiProblem;
 use ZF\ApiProblem\View\ApiProblemModel;
 use ZF\ApiProblem\View\ApiProblemRenderer;
-use ZF\Hal\Entity;
-use ZF\Hal\Collection;
 use Zend\View\Resolver;
 use Zend\View\Model\ViewModel;
 
@@ -97,7 +90,6 @@ class HtmlRenderer extends PhpRenderer
     	return $this->helpers;
     }
 
-
     /**
      * @return ViewEvent
      */
@@ -142,7 +134,7 @@ class HtmlRenderer extends PhpRenderer
     /**
      * Render a view model
      *
-     * If the view model is a HalJsonRenderer, determines if it represents
+     * If the view model is a HtmlRenderer, determines if it represents
      * a Collection or Entity, and, if so, creates a custom
      * representation appropriate to the type.
      *
@@ -161,15 +153,11 @@ class HtmlRenderer extends PhpRenderer
         $resolver = new Resolver\AggregateResolver();
         
         $this->setResolver($resolver);
-        //var_dump($this->config['view_manager']);die;
         $resolverMap = $this->config['view_manager']['template_map'];
                 
         $entityReflection = ($nameOrModel->isEntity()) ? new \ReflectionClass($nameOrModel->getPayload()->entity):new \ReflectionClass($nameOrModel->getPayload()->getCollection());
         $entityDir = dirname($entityReflection->getFileName());
         $viewDir = $entityDir.DIRECTORY_SEPARATOR.'view'.DIRECTORY_SEPARATOR;
-        if(file_exists($viewDir) && file_exists($viewDir.'layout.phtml')){
-        					
-        }
         if (!isset($payload) && $nameOrModel->isEntity()) {
         	$helper  = $this->helpers->get('Hal');
         	$payload = $helper->renderEntity($nameOrModel->getPayload());
@@ -177,7 +165,7 @@ class HtmlRenderer extends PhpRenderer
         	$this->setPayload($payload);
         	$this->setEntity($nameOrModel->getPayload()->entity);
         	if(file_exists($viewDir) && file_exists($viewDir.'get.phtml')){
-        		//$resolverMap['zf/rest/get'] = $viewDir.'get.phtml';	 
+        		$resolverMap['zf/rest/get'] = $viewDir.'get.phtml';	 
         	}
         }
         
@@ -193,7 +181,7 @@ class HtmlRenderer extends PhpRenderer
         	$this->setPayload($payload);
         	$this->setCollection($nameOrModel->getPayload()->getCollection());
         	if(file_exists($viewDir) && file_exists($viewDir.'get_list.phtml')){
-        		//$resolverMap['zf/rest/get-list'] = $viewDir.'get_list.phtml';
+        		$resolverMap['zf/rest/get-list'] = $viewDir.'get_list.phtml';
         	}
         }
         
@@ -261,9 +249,11 @@ class HtmlRenderer extends PhpRenderer
     {
     	$html = '';
     	if(is_array($value)){
+    		$html .= "<table class=\"list item\">";
     		foreach($value as $k=>$v){
-    			$html .= "<table class=\"list\"><tr><td>".$k."</td><td>".$this->getValue($v)."</td></tr></table>";
+    			$html .= "<tr><td>".$k."</td><td>".$this->getValue($v)."</td></tr>";
     		}
+    		$html .= "</table>";
     	} else
     		$html .= $value;
     	return $html;

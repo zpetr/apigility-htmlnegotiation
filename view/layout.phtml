@@ -1,5 +1,4 @@
 <?php echo $this->doctype(); ?>
-
 <html lang="en">
 <head>
 	<meta charset="utf-8">
@@ -7,16 +6,24 @@
     echo $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1.0');
 ?>
 
-    
 	<style>
+		.clearer {clear:both}
+		.collection-info {width:100%}
+		.collection-info div {float:left; margin:5px 20px;}
+		.collection-info div:last-child {float:right;}
 		body,td { color:#2f2f2f; font:11px/1.35em Verdana, Arial, Helvetica, sans-serif; }
 		table.list {width:100%}
 		table.list tr td {border-bottom: 1px solid #F5F5F5; text-align: center}
 		table.list tbody tr:hover {background: #F5F5F5}
+		table.item tr td {text-align: left}
+		.pages ol {list-style: none; padding: 0px; margin:0px;}
+		.pages ol li {border-right: 1px solid #ccc; display: inline; padding: 0 5px;}
+		.pages ol li:last-child {border-right:none}
+		.pages ol li a {text-decoration:none}
 	</style>
 </head>
-<body style="background:#F6F6F6; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:12px; margin:0; padding:0;">
-	<div style="background:#F6F6F6; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:12px; margin:0; padding:0;">
+<body style="font-family:Verdana, Arial, Helvetica, sans-serif; font-size:12px; margin:0; padding:0;">
+	<div style="font-family:Verdana, Arial, Helvetica, sans-serif; font-size:12px; margin:0; padding:0;">
 		<?php echo $this->content; ?>
 	</div>
 </body>

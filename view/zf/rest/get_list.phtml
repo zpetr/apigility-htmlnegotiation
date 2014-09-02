@@ -1,12 +1,112 @@
 <?php
+/**
+Array
+(
+    [_links] => Array
+        (
+            [self] => Array
+                (
+                    [href] => ...?page=10
+                )
+
+            [first] => Array
+                (
+                    [href] => ...
+                )
+
+            [last] => Array
+                (
+                    [href] => ...?page=163
+                )
+			[prev] => Array
+                (
+                    [href] => ...?page=9
+                )
+            [next] => Array
+                (
+                    [href] => ...?page=11
+                )
+
+        )
+
+    [_embedded] => Array
+        (
+            [API name] => Array
+                (
+                    [0] => Array
+                        (
+                            [field_1] => value_1
+                            [field_2] => value_2
+                        )
+
+                    [1] => Array
+                        (
+                            [field_1] => value_3
+                            [field_2] => value_4
+                        )
+
+                    [2] => Array
+                        (
+                            [field_1] => value_5
+                            [field_2] => value_6
+                            )
+
+                )
+
+        )
+
+    [page_count] => 163
+    [page_size] => 50
+    [total_items] => 8132
+)
+*/
 	$payload = $this->getPayload();
 	$collection = $this->getCollection();
-	//var_dump($payload);die;
+	$links = $payload['_links'];
+	$items = $payload['_embedded'];
 ?>
-
-<div style="font-size:12px; line-height:16px; margin:0;color:#5f3e67;">
-	<table class="list" width="100%">
-		<?php $printHeaders=true; foreach(reset($payload['_embedded']) as $item): ?>
+<?php if($payload['page_count']):?>
+<?php $currentPage = $collection->getCurrentPageNumber(); ?>
+<?php $pageSize = $collection->getItemCountPerPage(); ?>
+<div class="collection-info">
+	<div class="stat">
+		<?php echo ($currentPage-1)*$pageSize+1 ?> - <?php echo min($currentPage*$pageSize,$collection->getTotalItemCount()) ?> <small>/ <?php echo $collection->getTotalItemCount() ?></small>
+	</div>
+	<div class="pages">
+		<ol>
+			<?php if(isset($links['prev'])): ?>
+			<li><a href="<?php echo $links['prev']['href']; ?>">&#8592;</a></li>
+			<?php endif; ?>
+			<?php if($currentPage!=1): ?>
+			<li><a href="<?php echo $links['first']['href']; ?>">1</a></li>
+			<?php endif; ?>
+			<?php if($currentPage>3):?>
+			<li>...</li>
+			<?php endif; ?>
+			<?php if(isset($links['prev']) && ($currentPage-1)!=1): ?>
+			<li><a href="<?php echo $links['prev']['href']; ?>"><?php echo $currentPage-1 ?></a></li>
+			<?php endif; ?>
+			<li><?php echo $currentPage ?></li>
+			<?php if(isset($links['next']) && ($currentPage+1)!=$collection->count()): ?>
+			<li><a href="<?php echo $links['next']['href']; ?>"><?php echo $currentPage+1 ?></a></li>
+			<?php endif; ?>
+			<?php if($currentPage<$collection->count()-3):?>
+			<li>...</li>
+			<?php endif; ?>
+			<?php if($currentPage!=$collection->count()): ?>
+			<li><a href="<?php echo $links['last']['href']; ?>"><?php echo $collection->count() ?></a></li>
+			<?php endif; ?>
+			<?php if(isset($links['next'])): ?>
+			<li><a href="<?php echo $links['next']['href']; ?>">&#8594;</a></li>
+			<?php endif; ?>
+		</ol>
+	</div>
+</div>
+<?php endif; ?>
+<div class="clearer"> </div>
+<div class="items" style="font-size:12px; line-height:16px; margin:0;color:#5f3e67;">
+	<table class="list">
+		<?php $printHeaders=true; foreach(reset($items) as $item): ?>
 			<?php if($printHeaders): ?>
 			<thead>
 			<tr>

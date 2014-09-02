@@ -1,22 +1,17 @@
 <?php
-/**
- * @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
- * @copyright Copyright (c) 2014 Zend Technologies USA Inc. (http://www.zend.com)
- */
-
 namespace HtmlNegotiation\View;
 
 use Zend\View\Strategy\PhpRendererStrategy;
 use Zend\View\ViewEvent;
 
 /**
- * Extension of the JSON strategy to handle the HalJsonModel and provide
+ * Extension of the HTML strategy to handle the HtmlModel and provide
  * a Content-Type header appropriate to the response it describes.
  *
  * This will give the following content types:
  *
- * - application/hal+json for a result that contains HAL-compliant links
- * - application/json for all other responses
+ * - text/hal+html for a result that contains HAL-compliant links
+ * - text/html for all other responses
  */
 class HtmlStrategy extends PhpRendererStrategy
 {
@@ -42,7 +37,7 @@ class HtmlStrategy extends PhpRendererStrategy
             return;
         }
 
-        // JsonModel found
+        // HtmlModel found
         $this->renderer->setViewEvent($e);
         return $this->renderer;
     }
@@ -65,7 +60,7 @@ class HtmlStrategy extends PhpRendererStrategy
 
         $result   = $e->getResult();
         if (!is_string($result)) {
-            // We don't have a string, and thus, no JSON
+            // We don't have a string
             return;
         }
 

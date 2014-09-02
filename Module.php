@@ -24,7 +24,7 @@ class Module
     /**
      * Retrieve Service Manager configuration
      *
-     * Defines ZF\Hal\JsonStrategy service factory.
+     * Defines HtmlNegotiation\HtmlStrategy service factory.
      *
      * @return array
      */

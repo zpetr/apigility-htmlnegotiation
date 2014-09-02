@@ -6,7 +6,7 @@ use ZF\Hal\Entity;
 use ZF\ContentNegotiation\ViewModel;
 
 /**
- * Simple extension to facilitate the specialized JsonStrategy and JsonRenderer
+ * Simple extension to facilitate the specialized HtmlStrategy and HtmlRenderer
  * in this Module.
  */
 class HtmlModel extends ViewModel
