@@ -39,7 +39,7 @@ or update it
                ...,
                'HtmlNegotiation',
                ....     
-    ```
+```
 2. Go to admin, select your API and change *Content Negotiation Selector* to **HTML-HalJson**
 3. Add **text/html** to *Accept whitelist* and *Content-Type whitelist*. Add other headers if needed.
 4. Save configuration
