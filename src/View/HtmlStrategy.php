@@ -1,5 +1,5 @@
 <?php
-namespace HtmlNegotiation\View;
+namespace zPetr\HtmlNegotiation\View;
 
 use Zend\View\Strategy\PhpRendererStrategy;
 use Zend\View\ViewEvent;

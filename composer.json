@@ -28,7 +28,7 @@
     },
     "autoload": {
         "psr-4": {
-            "HtmlNegotiation\\": "src/"
+            "zPetr\\HtmlNegotiation\\": "src/"
         },
         "classmap": [
             "Module.php"

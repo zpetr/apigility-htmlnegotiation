@@ -1,5 +1,5 @@
 <?php
-namespace HtmlNegotiation\View;
+namespace zPetr\HtmlNegotiation\View;
 
 use ZF\Hal\Collection;
 use ZF\Hal\Entity;

@@ -1,5 +1,5 @@
 <?php
-namespace HtmlNegotiation\View;
+namespace zPetr\HtmlNegotiation\View;
 
 use Zend\View\HelperPluginManager;
 use Zend\View\Renderer\PhpRenderer;
@@ -200,7 +200,7 @@ class HtmlRenderer extends PhpRenderer
         $map = new Resolver\TemplateMapResolver($this->config['view_manager']['template_map']);
         
         $resolverLayout->attach($map);
-        $view->setTemplate("htmlnegotiation/layout");
+        $view->setTemplate("zpetr/htmlnegotiation/layout");
         
         $view->setVariable('content',$content);
         

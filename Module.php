@@ -1,5 +1,5 @@
 <?php
-namespace HtmlNegotiation;
+namespace zPetr\HtmlNegotiation;
 
 use Zend\Mvc\MvcEvent;
 
@@ -31,7 +31,7 @@ class Module
     public function getServiceConfig()
     {
     	return array('factories' => array(
-    			'HtmlNegotiation\HtmlRenderer' => function ($services) {
+    			'zPetr\HtmlNegotiation\HtmlRenderer' => function ($services) {
     				$helpers            = $services->get('ViewHelperManager');
     				$apiProblemRenderer = $services->get('ZF\ApiProblem\ApiProblemRenderer');
     				$config             = $services->get('Config');
@@ -41,8 +41,8 @@ class Module
     
     				return $renderer;
     			},
-    			'HtmlNegotiation\HtmlStrategy' => function ($services) {
-    				$renderer = $services->get('HtmlNegotiation\HtmlRenderer');
+    			'zPetr\HtmlNegotiation\HtmlStrategy' => function ($services) {
+    				$renderer = $services->get('zPetr\HtmlNegotiation\HtmlRenderer');
     				return new View\HtmlStrategy($renderer);
     			},
     	));
@@ -82,6 +82,6 @@ class Module
     	$view                = $services->get('View');
     	$events              = $view->getEventManager();
 
-    	$events->attach($services->get('HtmlNegotiation\HtmlStrategy'), 190);
+    	$events->attach($services->get('zPetr\HtmlNegotiation\HtmlStrategy'), 190);
     }
 }
