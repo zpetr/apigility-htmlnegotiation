@@ -4,7 +4,7 @@ return array(
         'template_map' => array(
             'zf/rest/get'			  		=> __DIR__ . '/../view/zf/rest/get.phtml',
         	'zf/rest/get-list'		  		=> __DIR__ . '/../view/zf/rest/get_list.phtml',
-        	'zpetr\htmlnegotiation/layout'	=> __DIR__ . '/../view/layout.phtml',
+        	'zpetr/htmlnegotiation/layout'	=> __DIR__ . '/../view/layout.phtml',
         ),
         'template_path_stack' => array(
             __DIR__ . '/../view',

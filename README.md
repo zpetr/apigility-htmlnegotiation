@@ -37,7 +37,7 @@ or update it
 	return array(
     	'modules' => array(
         	...,
-            'HtmlNegotiation',
+            'zPetr\\HtmlNegotiation',
             ....
 		)
 	)     
@@ -57,7 +57,7 @@ If you want to personalize custom layout template:
 	...
 	'view_manager' => array(
 		'template_map' => array(
-			'htmlnegotiation/layout'	=> __DIR__ . '/../view/layout.phtml',
+			'zpetr/htmlnegotiation/layout'	=> __DIR__ . '/../view/layout.phtml',
 		),
 		'template_path_stack' => array(
 			__DIR__ . '/../view',
