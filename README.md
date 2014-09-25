@@ -32,7 +32,7 @@ or update it
     php composer.phar update
 
 ### Usage
-1. Add *HtmlNegotiation* to application.config.php:
+1. Add *zPetr\\HtmlNegotiation* to application.config.php:
 ```php
 	return array(
     	'modules' => array(
