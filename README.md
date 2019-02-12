@@ -18,7 +18,7 @@ Define dependencies in your composer.json file
 ```json
 {
     "require": {
-        "zpetr/apigility-htmlnegotiation" : "dev-master"
+        "zpetr/apigility-htmlnegotiation" : "1.*"
     }
 }
 ```
@@ -32,7 +32,7 @@ or update it
     php composer.phar update
 
 ### Usage
-- Add *zPetr\\HtmlNegotiation* to application.config.php:
+- Add *zPetr\\HtmlNegotiation* to config/modules.config.php:
 ```php
 	return array(
     	'modules' => array(
