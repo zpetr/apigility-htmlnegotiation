@@ -11,7 +11,7 @@
         "negotiation"
     ],
     "homepage": "https://github.com/zpetr/apigility-htmlnegotiation",
-    "license": "BSD",
+    "license": "MIT",
     "authors": [
         {
             "name": "Petr Guelin (Glushchenko)",
@@ -21,7 +21,7 @@
     ],
     "require": {
         "php" : ">=5.3.23",
-        "zfcampus/zf-apigility" : "^1.4"
+        "laminas-api-tools/api-tools" : "^1.6.0"
     },
     "autoload": {
         "psr-4": {
